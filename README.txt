@@ -16,18 +16,25 @@ Basic Requirements:
  Use HTML, CSS and JavaScript.
  Use node.js as the backend server
  Use the recommended file structure to set up your project using an MVC pattern
- your-app
-    public
-        css
-        images
-        js
-    views
-        partials
-    routes
-    controllers
-    middleware
-    services
-    server.js
+    Drink-Water/
+        public/                 # Static assets (CSS, images, client-side JS)
+            css/
+            images/
+            js/
+        src/                    # Source code directory
+            config/             # Database connections, environment settings
+            controllers/        # Request handler logic
+            models/             # Data schemas or database queries
+            routes/             # Express route definitions
+            services/           # Business logic layer
+            app.js              # Express app setup, middleware, and route mounting
+            server.js           # Entry point (listens on port 3000)
+        views/                  # EJS or template engine files
+            partials/
+            home.ejs
+            products.ejs
+    package.json
+    package-lock.json
 
  Your website must contain at minimum 3 distinct pages. You may include
 additional pages if they support your website's purpose. For example, the
