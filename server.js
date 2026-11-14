@@ -14,17 +14,15 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 
-// Session Middleware
+// Session Middleware, I dont think this works very well
 app.use(session({
     secret: 'water-bottle-secret-keu-change-this',
     resave: false,
     saveUninitialized: false
 }));
 
-// Route Dispatcher
 app.use('/', storeRoutes);
 
-// Server Listener
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
