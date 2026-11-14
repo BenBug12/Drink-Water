@@ -1,7 +1,12 @@
 CSCI 1101
 Exam #2 – Project- DRAFT
 Due Date: Friday, November 13, 2026, at midnight
+---------------------------
+Dev Notes:
+I had issues with getting the login, register, and admin login to properly work and ran out of time.
 
+
+---------------------------
     For this assignment, you will propose, design, and develop a professional web app for a
 company, business, brand, or product of your choice. Your app should communicate
 information effectively, provide good user experience, and demonstrate your
