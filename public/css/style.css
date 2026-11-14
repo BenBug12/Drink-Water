@@ -1,24 +1,324 @@
+/* ==========================================
+   1. CSS Variables & Global Resets
+   ========================================== */
+:root {
+    --primary-blue: #0284c7;       /* Fresh ocean blue */
+    --primary-dark: #0369a1;       /* Deep water blue for hover states */
+    --accent-light: #e0f2fe;       /* Soft ice blue for cards/backgrounds */
+    --text-dark: #1e293b;          /* Dark slate for readable text */
+    --text-light: #64748b;         /* Muted gray for subtext */
+    --bg-color: #f8fafc;           /* Light neutral background */
+    --white: #ffffff;
+    --border-color: #cbd5e1;
+    --success-green: #16a34a;
+    --radius: 8px;
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   2. Navigation & Header Styling
+   ========================================== */
+.site-header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-list a:hover {
+    color: var(--primary-blue);
+}
+
+.nav-right .login-link {
+    text-decoration: none;
+    background-color: var(--accent-light);
+    color: var(--primary-dark);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-right .login-link:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+/* ==========================================
+   3. Main Layout & Typography
+   ========================================== */
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================
+   4. Product Grid & Catalog Cards
+   ========================================== */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    gap: 2rem;
+    margin-top: 1.5rem;
 }
 
 .product-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.product-item h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
 }
 
 .product-item img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px 0;
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background-color: var(--accent-light);
+    border-radius: 6px;
+    margin: 1rem 0;
 }
 
-.order-form {
-    margin-top: 15px;
+/* ==========================================
+   5. Forms, Inputs & Buttons
+   ========================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background-color: var(--white);
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+button[type="submit"], .btn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    text-decoration: none;
+}
+
+button[type="submit"]:hover, .btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* ==========================================
+   6. Orders & Subscriptions Cards
+   ========================================== */
+.order-list, .subscription-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.order-card, .subscription-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-blue);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.order-card h3, .subscription-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+/* ==========================================
+   7. Admin Dashboard Tables
+   ========================================== */
+.admin-section {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.admin-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-light);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table th {
+    background-color: var(--accent-light);
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* ==========================================
+   8. Footer Styling
+   ========================================== */
+.site-footer {
+    background-color: var(--text-dark);
+    color: var(--white);
+    padding: 3rem 2rem 1.5rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #334155;
+}
+
+.footer-brand h3 {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: #94a3b8;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.875rem;
 }

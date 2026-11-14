@@ -13,7 +13,7 @@
                 <p><strong>Size:</strong><%= product.volumeSize %></p>
                 <p><strong>Price:</strong> $<%= product.price.toFixed(2) %></p>
                 <p><strong>In Stock:</strong> <%= product.stockQuantity %> units</p>
-                <img src="/images/water.png" alt="<%= product.title %> Image" width="300" height="200">
+                <img src="/images/<%= product.image %>" alt="<%= product.title %> Image" width="300" height="200">
 
                 <form action="/checkout" method="POST" class="order-form">
                     <input type="hidden" name="productId" value="<%= product.id %>">
