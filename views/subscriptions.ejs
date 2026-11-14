@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<main class="subscriptions-main">
+    <h1>Water Delivery Subscriptions</h1>
+    <p>Never run out of pure water. Set up a recurring delivery schedule below!</p>
+
+    <!-- Subscription Form Section -->
+    <section class="subscription-form-section" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+        <h2>Create a New Subscription</h2>
+        <form action="/subscribe" method="POST">
+            <div style="margin-bottom: 15px;">
+                <label for="productId">Select Product:</label>
+                <select name="productId" id="productId" required>
+                    <% products.forEach(product => { %>
+                        <option value="<%= product.id %>">
+                            <%= product.title %> (<%= product.volumeSize %>) - $<%= product.price.toFixed(2) %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="quantity">Quantity per Delivery:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" required>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="frequency">Delivery Frequency:</label>
+                <select name="frequency" id="frequency" required>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Bi-Weekly">Every 2 Weeks</option>
+                    <option value="Monthly">Monthly</option>
+                </select>
+            </div>
+
+            <button type="submit">Start Subscription</button>
+        </form>
+    </section>
+
+    <!-- Active Subscriptions List Section -->
+    <section class="active-subscriptions-section">
+        <h2>Your Active Subscriptions (<%= subscriptions.length %>)</h2>
+        <% if (subscriptions.length === 0) { %>
+            <p>You have no active subscriptions right now.</p>
+        <% } else { %>
+            <div class="subscription-list">
+                <% subscriptions.forEach(sub => { %>
+                    <div class="subscription-card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 6px; background: #f9f9f9;">
+                        <h3>Subscription #<%= sub.subscriptionId %></h3>
+                        <p><strong>Item:</strong> <%= sub.productTitle %> (Qty: <%= sub.quantity %>)</p>
+                        <p><strong>Frequency:</strong> <%= sub.frequency %></p>
+                        <p><strong>Estimated Cost Per Delivery:</strong> $<%= sub.pricePerDelivery %></p>
+                        <p><strong>Status:</strong> <span style="color: green;"><%= sub.status %></span></p>
+                        <p><strong>Started On:</strong> <%= sub.startDate.toLocaleDateString() %></p>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </section>
+</main>
+
+<%- include('partials/footer') %>

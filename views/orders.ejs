@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<main class = "orders-main">
+    <h1>Your order history</h1>
+
+    <% if (orders.length === 0) { %>
+        <p>You have no orders yet.</p>
+    <% } else { %>
+        <div class="order-list">
+            <% orders.forEach(order => { %>
+                <div class="order-card">
+                    <h3>Order #<%= order.orderId %></h3>
+                    <p><strong>Item:</strong> <%=order.productItems.title %></p>
+                    <p><strong>Quantity:</strong> <%= order.productItems.quantity %></p>
+                    <p><strong>Total Amount:</strong> $<%= order.totalAmount %></p>
+                    <p><strong>Payment Status:</strong> <%= order.paymentStatus %></p>
+                    <p><strong>Order Date:</strong> <%= order.orderDate.toLocaleDateString() %></p>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</main>
+
+<%- include('partials/footer') %>

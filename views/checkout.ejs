@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<main class="checkout-main">
+    <h1>Order Confirmation</h1>
+    
+    <div class="success-card" style="border: 1px solid #4CAF50; padding: 25px; border-radius: 8px; background-color: #f9fff9; margin-top: 20px;">
+        <h2 style="color: #2e7d32; margin-top: 0;">Success! Your order has been placed.</h2>
+        <p>Thank you for choosing Drink-Water. Here are your order details:</p>
+
+        <div class="receipt-details" style="margin: 20px 0;">
+            <p><strong>Order ID:</strong> #<%= order.orderId %></p>
+            <p><strong>Item Purchased:</strong> <%= order.productItems.title %></p>
+            <p><strong>Quantity:</strong> <%= order.productItems.quantity %></p>
+            <p><strong>Total Amount:</strong> $<%= order.totalAmount %></p>
+            <p><strong>Payment Status:</strong> <%= order.paymentStatus %></p>
+            <p><strong>Order Date:</strong> <%= order.orderDate.toLocaleString() %></p>
+        </div>
+
+        <div class="checkout-links" style="margin-top: 20px;">
+            <a href="/orders" style="margin-right: 15px;">View Your Order History</a>
+            <a href="/products">Continue Shopping</a>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer') %>
